@@ -60,7 +60,7 @@ def Run(memory, crc):
                 response = crc.run(question)
             
             #write the ressponse
-            st.write(response)
+            st.subheader(response)
 
             #write the chat history
             variables = memory.load_memory_variables({})
