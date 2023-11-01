@@ -27,7 +27,7 @@ def SelectModel():
                                     step=0.01)
     
     return ChatOpenAI(model=model_name, 
-                      openai_api_key=st.secrets["OPENAI_API_KEY"]
+                      openai_api_key=st.secrets["OPENAI_API_KEY"],
                       temperature=temperature)
 
 def InitializeModel(memory):
