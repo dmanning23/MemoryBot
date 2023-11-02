@@ -8,7 +8,6 @@ from langchain.prompts import (ChatPromptTemplate,
                                HumanMessagePromptTemplate)
 from langchain.schema import (SystemMessage, HumanMessage, AIMessage)
 
-@st.cache_resource
 def InitializeMemory():
     print("resetting memory")
     return ConversationBufferMemory(memory_key="chat_history", return_messages=True)
@@ -86,7 +85,10 @@ def main():
     #setup the sidebar
     st.sidebar.title("Options")
 
-    memory = InitializeMemory()
+    if "memory" not in st.session_state:
+        st.session_state["memory"]=InitializeMemory()
+
+    memory=st.session_state["memory"]
 
     #add a button to the sidebar to start a new conversation
     clear_button = st.sidebar.button("New Conversation", key="clear")
